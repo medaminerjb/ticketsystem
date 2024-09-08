@@ -1,0 +1,17 @@
+{
+    "myTodos": "Mes Todo-s",
+    "addNew": "Ajouter un nouveau...",
+    "filter": "Filtrer",
+    "logout": "Deconnexion",
+    "dueDate": "Date d'échéance",
+    "addedDate": "Date d'ajout",
+    "ascending": "Ascendant",
+    "editTodo": "Modifier la tâche",
+    "deleteTodo": "Supprimer la tâche",
+    "createdDate": "Date de création",
+    "saveChanges": "Sauvegarder les modifications",
+    "changeLanguage": "Changer de langue",
+    "english": "Anglais",
+    "french": "Français"
+  }
+  

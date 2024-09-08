@@ -143,12 +143,11 @@ export default {
           password: this.loginPassword,
           login : 'login'
         });
-        console.log('Login successful:', response.data);
-        const token = 'dummy-token'; // Assume you get a token from your API
+        console.log('Login successful:', response.data.user);
+        const token = response.data.user// Assume you get a token from your API
         console.log('Token:', token);
-        auth.login(token); // Store the token
-        this.$router.push({ name: 'Home' }); // Redirect to home page
-   
+       auth.login(token); // Store the token
+       this.$router.push({ name: 'Home' }); // Redirect to home page
       } catch (error) {
         document.getElementById('msglogin').style.display ='';
         document.getElementById('msglogin').style.color ='red';
@@ -160,19 +159,19 @@ export default {
       }
     },
     async handleSignup() {
-
+      console.log(this.signupPassword)
       if (this.signupPassword !== this.signupConfirmPassword) {
         alert("Passwords do not match!");
         return;
       }  
       try {
         const response = await axios.post('signup/', {
-          email: this.loginEmail,
-          password: this.loginPassword,
+          email: this.signupEmail,
+          password: this.signupPassword,
           signup : 'signup'
         });
         console.log('Login successful:', response.data);
-   
+        this.$router.push('/signin'); // Redirect to login page, adjust as needed
       } catch (error) {
 
         console.error('Login failed:', error.response.data);

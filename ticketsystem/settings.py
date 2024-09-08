@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u@#v!*rsuwm4r)rf!o(wcczqfdfi0=c*pq&y_9q5t6%fou5su%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
+    "http://localhost:3000", 
 ]
 ROOT_URLCONF = 'ticketsystem.urls'
 
@@ -117,7 +118,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+LANGUAGES = (
+('en',('English')),
+('fr',('French'))
+)
+import os
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

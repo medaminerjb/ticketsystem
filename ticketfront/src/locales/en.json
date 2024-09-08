@@ -1,0 +1,14 @@
+{
+    "myTodos": "My Todo-s",
+    "addNew": "Add new...",
+    "filter": "Filter",
+    "logout": "Logout",
+    
+    "editTodo": "Edit todo",
+    "deleteTodo": "Delete todo",
+    "createdDate": "Created date",
+    "saveChanges": "Save Changes",
+    "changeLanguage": "Change Language",
+    "english": "English",
+    "french": "French"
+  }
