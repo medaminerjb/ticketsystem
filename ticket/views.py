@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
-
+from rest_framework.authtoken.models import Token
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
@@ -20,14 +20,14 @@ class LoginView(APIView):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             # Authentication successful
-            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
+            token = Token.objects.create(user=user)
+            return Response({"message": "Login successful","user":token.key}, status=status.HTTP_200_OK)
         else:
             # Authentication failed
             return Response({"message": "Invalid email or password"}, status=status.HTTP_400_BAD_REQUEST)
 
 class SignUp(APIView):
     def post(self, request):
-        
         # Extract email and password from the JSON body of the request
         email = request.data.get('email')
         password = request.data.get('password')

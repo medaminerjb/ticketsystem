@@ -17,7 +17,7 @@
             <div class="form-link">
               <a href="#" class="forgot-pass">Forgot password?</a>
             </div>
-  
+            <p id="msglogin" style="display: none;">hshsh</p>
             <div class="field button-field">
               <button type="submit">Login</button>
             </div>
@@ -147,9 +147,14 @@ export default {
         const token = 'dummy-token'; // Assume you get a token from your API
         console.log('Token:', token);
         auth.login(token); // Store the token
-        //this.$router.push({ name: 'Home' }); // Redirect to home page
+        this.$router.push({ name: 'Home' }); // Redirect to home page
    
       } catch (error) {
+        document.getElementById('msglogin').style.display ='';
+        document.getElementById('msglogin').style.color ='red';
+
+        document.getElementById('msglogin').textContent = error.response.data.message
+
         console.error('Login failed:', error.response.data);
 
       }
@@ -169,6 +174,7 @@ export default {
         console.log('Login successful:', response.data);
    
       } catch (error) {
+
         console.error('Login failed:', error.response.data);
 
       }
