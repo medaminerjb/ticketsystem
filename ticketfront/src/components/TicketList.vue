@@ -14,10 +14,12 @@
               <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                 <p class="small mb-0 me-2 text-muted">Language</p>
                 <select v-model="selectedLanguage" @change="changeLanguage">
-                  <option value="en">{{ $t('english') }}</option>
-                  <option value="fr">{{ $t('french') }}</option>
+                  <option v-for="language in languages" :key="language.code" :value="language.code">
+                    {{ language.name }}
+                  </option>
                   <!-- Add more languages here -->
                 </select>
+        
                 <p class="small mb-0 ms-4 me-2 text-muted">{{ $t('logout') }}</p>
                 <a href="#!" style="color: red;" @click.prevent="logout" data-mdb-tooltip-init title="{{ $t('logout') }}">
              
@@ -114,6 +116,8 @@ import { auth } from '../auth'; // Import your authentication service
 export default {
   data() {
     return {
+      // Parse the JSON string from the environment variable
+      languages: JSON.parse(process.env.VUE_APP_LANGUAGES || '[]'),    
       tickets: [],
       newticket : '',
       selectedTicket: null,
@@ -161,7 +165,7 @@ export default {
     },
 
     async addForm() {
-    console.log(this.newticket)
+    console.log(process.env.VUE_APP_API_ADDRESS,'hello')
       try {
         const response = await axios.post('ticket/', {
           newticket: this.newticket,
