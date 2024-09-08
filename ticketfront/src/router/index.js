@@ -2,25 +2,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { auth } from '../auth'; // Import your authentication service
 
-// Lazy load components
-const TicketList = () => import('../components/TicketList.vue');
-const TicketDetail = () => import('../components/TicketDetail.vue');
+
+const TicketDetails = () => import('../views/TicketDetails.vue');
+
 const SignIn = () => import('../components/SignIn.vue');
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: TicketList,
+    component: TicketDetails,
     meta: { requiresAuth: true } // This route requires authentication
   },
-  {
-    path: '/ticket/:id',
-    name: 'TicketDetail',
-    component: TicketDetail,
-    props: true,
-    meta: { requiresAuth: true } // This route requires authentication
-  },
+
   {
     path: '/signin',
     name: 'SignIn',
